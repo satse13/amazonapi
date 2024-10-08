@@ -13,14 +13,16 @@ public class User {
 		private Long id;
 		private String firstName;
 		private String secondName;
+		private String email;
 
 		public User() {
 		}
 
-		public User(Long id, String firstName, String secondName) {
+		public User(Long id, String firstName, String secondName, String email) {
 			this.id = id;
 			this.firstName = firstName;
 			this.secondName = secondName;
+			this.email = email;
 		}
 
 		public Long getId() {
@@ -45,6 +47,14 @@ public class User {
 
 		public void setSecondName(String secondName) {
 			this.secondName = secondName;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
 		}
 
 		@Override
