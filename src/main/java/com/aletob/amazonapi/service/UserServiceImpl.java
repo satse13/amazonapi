@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 		logger.info("Getting user by id: " + id);
 		
 		return userRepository.findById(id).map(user -> {
-			return new UserDTO(user.getFirstName(), user.getSecondName(), user.getEmail());
+			return mapUserToUserDTO(user);
 		}).orElse(null);
 		
 	}
@@ -53,9 +53,10 @@ public class UserServiceImpl implements UserService {
 		
 		logger.info("Updating user: " + userDTO);
 		
-		return userRepository.findByEmail(userDTO.getEmail()).map(user -> {
+		return userRepository.findById(userDTO.getId()).map(user -> {
 			user.setFirstName(userDTO.getFirstName());
 			user.setSecondName(userDTO.getSecondName());
+			user.setEmail(userDTO.getEmail());
 			userRepository.save(user);
 			return mapUserToUserDTO(user);
 		}).orElse(null);
@@ -67,7 +68,7 @@ public class UserServiceImpl implements UserService {
 		
 		logger.info("Deleting user: " + userDTO);
 		
-		userRepository.findByEmail(userDTO.getEmail()).ifPresent(user -> {
+		userRepository.findById(userDTO.getId()).ifPresent(user -> {
 			userRepository.delete(user);
 		});
 		
@@ -75,12 +76,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	private UserDTO mapUserToUserDTO(User user) {
-		return new UserDTO(user.getFirstName(), user.getSecondName(), user.getEmail());
+		return new UserDTO(user.getId(), user.getFirstName(), user.getSecondName(), user.getEmail());
 	}
 
 	private User mapUserDTOToUser(UserDTO userDTO) {
-		return new User(userDTO.getFirstName(), userDTO.getSecondName(), userDTO.getEmail());
+		return new User(userDTO.getId(), userDTO.getFirstName(), userDTO.getSecondName(), userDTO.getEmail());
 	}
 
-	
 }
