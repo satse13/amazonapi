@@ -2,6 +2,7 @@ package com.aletob.amazonapi.dto;
 
 public class OrderDTO {
 	
+	private Long id;
 	private Long userId;
 	private Long productId;
 	private int quantity;
@@ -10,7 +11,8 @@ public class OrderDTO {
 	public OrderDTO() {
 	}
 
-	public OrderDTO(Long userId, Long productId, int quantity) {
+	public OrderDTO(Long id, Long userId, Long productId, int quantity) {
+		this.id = id;
 		this.userId = userId;
 		this.productId = productId;
 		this.quantity = quantity;

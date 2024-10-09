@@ -2,7 +2,7 @@ package com.aletob.amazonapi.dto;
 
 public class UserDTO {
 	
-	
+	private Long id;
 	private String firstName;
 	private String secondName;
 	private String email;
@@ -11,7 +11,8 @@ public class UserDTO {
 	public UserDTO() {
 	}
 
-	public UserDTO(String firstName, String secondName, String email) {
+	public UserDTO(Long id, String firstName, String secondName, String email) {
+		this.id = id;
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.email = email;

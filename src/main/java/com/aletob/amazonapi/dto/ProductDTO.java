@@ -2,6 +2,7 @@ package com.aletob.amazonapi.dto;
 
 public class ProductDTO {
 	
+	private Long id;
 	private String name;
 	private String description;
 	private double price;
@@ -10,7 +11,8 @@ public class ProductDTO {
 	public ProductDTO() {
 	}
 
-	public ProductDTO(String name, String description, double price, int quantity) {
+	public ProductDTO(Long id, String name, String description, double price, int quantity) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
