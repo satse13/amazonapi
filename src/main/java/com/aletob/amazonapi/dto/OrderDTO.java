@@ -18,6 +18,10 @@ public class OrderDTO {
 		this.quantity = quantity;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}
