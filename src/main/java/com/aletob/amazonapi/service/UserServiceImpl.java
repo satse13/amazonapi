@@ -2,7 +2,6 @@ package com.aletob.amazonapi.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aletob.amazonapi.dto.UserDTO;
 import com.aletob.amazonapi.model.User;
@@ -12,8 +11,11 @@ public class UserServiceImpl implements UserService {
 
 	private final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	@Override
 	public UserDTO getUserById(Long id) {
@@ -77,7 +79,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	private User mapUserDTOToUser(UserDTO userDTO) {
-		return new User(null, userDTO.getFirstName(), userDTO.getSecondName(), userDTO.getEmail());
+		return new User(userDTO.getFirstName(), userDTO.getSecondName(), userDTO.getEmail());
 	}
 
 	
