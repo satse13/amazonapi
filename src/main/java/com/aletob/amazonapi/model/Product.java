@@ -27,6 +27,13 @@ public class Product {
 		this.quantity = quantity;
 	}
 	
+	public Product(String name, String description, double price, int quantity) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
 	public Long getId() {
 		return id;
 	}
